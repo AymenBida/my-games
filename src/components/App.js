@@ -1,5 +1,6 @@
 import './App.scss';
+import Card from './Card/Card';
 
-const App = () => null;
+const App = () => (<Card />);
 
 export default App;

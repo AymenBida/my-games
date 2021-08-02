@@ -1,5 +1,6 @@
 import propTypes from 'prop-types';
 import defaultImage from './assets/defaultImage.png';
+import './style/card.scss';
 
 const Card = (props) => {
   const { title, cover, year } = props;
@@ -8,11 +9,15 @@ const Card = (props) => {
   };
 
   return (
-    <div>
-      <div data-testid="cover" style={style} />
-      <h1 data-testid="title">{title}</h1>
-      <p data-testid="yearLabel">Year</p>
-      <p data-testid="year">{year}</p>
+    <div className="card">
+      <div className="card__cover" data-testid="cover" style={style} />
+      <div className="card__detailsWrapper">
+        <h1 className="card__title" data-testid="title">{title}</h1>
+        <div className="card__yearWrapper">
+          <p className="card__yearLabel" data-testid="yearLabel">Year</p>
+          <p className="card__year" data-testid="year">{year}</p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import samples from './samples';
+import games from './games';
 
-export default combineReducers({ samples });
+export default combineReducers({ games });

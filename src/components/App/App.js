@@ -2,7 +2,7 @@ import './style/App.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getGames from '../../api/getGames';
-import Card from '../Card/Card';
+import Card from './components/Card/Card';
 import GET_GAMES from '../../redux/actions/GET_GAMES';
 
 const App = () => {

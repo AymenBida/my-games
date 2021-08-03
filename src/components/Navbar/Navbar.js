@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
   const username = localStorage.getItem('username');
   if (username) {
@@ -10,7 +12,7 @@ const Navbar = () => {
   }
   return (
     <nav>
-      <button data-testid="signup" type="button">Register</button>
+      <Link to="/signup"><button data-testid="signup" type="button">Register</button></Link>
       <button data-testid="login" type="button">Login</button>
     </nav>
   );

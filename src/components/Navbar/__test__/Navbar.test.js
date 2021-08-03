@@ -1,10 +1,14 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+
 import Navbar from '../Navbar';
 
 describe('Navbar element', () => {
   describe('If rendered when not logged in', () => {
     it('renders a Navbar with Signup and Login buttons', () => {
-      const { getByTestId } = render(<Navbar />);
+      const history = createMemoryHistory();
+      const { getByTestId } = render(<Router history={history}><Navbar /></Router>);
       const signup = getByTestId('signup');
       const login = getByTestId('login');
 
@@ -18,7 +22,8 @@ describe('Navbar element', () => {
   describe('If rendered when logged in', () => {
     it('renders a Navbar with Username and with a Logout button', () => {
       localStorage.setItem('username', 'Example User');
-      const { getByTestId } = render(<Navbar />);
+      const history = createMemoryHistory();
+      const { getByTestId } = render(<Router history={history}><Navbar /></Router>);
       const username = getByTestId('username');
       const logout = getByTestId('logout');
 
@@ -26,6 +31,18 @@ describe('Navbar element', () => {
       expect(logout.textContent).toBe('Logout');
       expect(logout.type).toBe('button');
       localStorage.clear();
+    });
+  });
+
+  describe('When Register button is clicked', () => {
+    it('redirects to the /signup route', () => {
+      const history = createMemoryHistory();
+      const { getByTestId } = render(<Router history={history}><Navbar /></Router>);
+      const signup = getByTestId('signup');
+
+      fireEvent.click(signup);
+
+      expect(history.location.pathname).toBe('/signup');
     });
   });
 });

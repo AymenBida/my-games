@@ -14,4 +14,18 @@ describe('Navbar element', () => {
       expect(login.type).toBe('button');
     });
   });
+
+  describe('If rendered when logged in', () => {
+    it('renders a Navbar with Username and with a Logout button', () => {
+      localStorage.setItem('username', 'Example User');
+      const { getByTestId } = render(<Navbar />);
+      const username = getByTestId('username');
+      const logout = getByTestId('logout');
+
+      expect(username.textContent).toBe('Example User');
+      expect(logout.textContent).toBe('Logout');
+      expect(logout.type).toBe('button');
+      localStorage.clear();
+    });
+  });
 });

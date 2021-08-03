@@ -9,10 +9,9 @@ const postSignup = async ({ name, email, password }) => {
       email,
       password,
     });
-    console.log(response);
-    return response;
+    return response.data;
   } catch (error) {
-    return error;
+    return error.response.data;
   }
 };
 

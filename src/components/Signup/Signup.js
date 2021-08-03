@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
 
 const Signup = () => {
+  const history = useHistory();
   const credentials = useSelector((state) => state.signup);
   const { name, email, password } = credentials;
   const dispatch = useDispatch();
@@ -11,9 +13,18 @@ const Signup = () => {
     dispatch(action(event.target.value));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    postSignup(credentials);
+    const response = await postSignup(credentials);
+    console.log(response);
+    if (response.auth_token) {
+      localStorage.setItem('token', response.auth_token);
+      localStorage.setItem('username', response.username);
+      localStorage.setItem('success', response.message);
+      history.push('/');
+    } else {
+      localStorage.setItem('errorNow', response.message);
+    }
   };
 
   return (

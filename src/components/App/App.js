@@ -6,6 +6,7 @@ import Card from './components/Card/Card';
 import GET_GAMES from '../../redux/actions/GET_GAMES';
 
 const App = () => {
+  const successMessage = localStorage.getItem('success');
   const games = useSelector((state) => state.games);
   const dispatch = useDispatch();
 
@@ -16,11 +17,16 @@ const App = () => {
 
   useEffect(() => {
     callGames();
+    return (() => localStorage.removeItem('success'));
   }, []);
+
   return (
-    games.map(({
-      id, title, cover, year,
-    }) => (<Card key={id} title={title} cover={cover} year={year} />))
+    <>
+      {successMessage ? <div>{successMessage}</div> : null}
+      {games.map(({
+        id, title, cover, year,
+      }) => (<Card key={id} title={title} cover={cover} year={year} />))}
+    </>
   );
 };
 

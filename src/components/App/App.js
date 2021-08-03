@@ -1,12 +1,16 @@
 import './style/App.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import getGames from '../../api/getGames';
 import Card from './components/Card/Card';
 import GET_GAMES from '../../redux/actions/GET_GAMES';
 
 const App = () => {
-  const successMessage = localStorage.getItem('success');
+  const history = useHistory();
+  const [successMessage] = useState(history.location.state);
+  if (successMessage) { history.replace('/', undefined); }
+
   const games = useSelector((state) => state.games);
   const dispatch = useDispatch();
 
@@ -17,7 +21,8 @@ const App = () => {
 
   useEffect(() => {
     callGames();
-    return (() => localStorage.removeItem('success'));
+    return (() => {
+    });
   }, []);
 
   return (

@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
 
 const Signup = () => {
+  const [errorMessage, setErrorMessage] = useState(undefined);
   const history = useHistory();
   const credentials = useSelector((state) => state.signup);
   const { name, email, password } = credentials;
@@ -20,12 +22,15 @@ const Signup = () => {
     if (response.auth_token) {
       localStorage.setItem('token', response.auth_token);
       localStorage.setItem('username', response.username);
-      localStorage.setItem('success', response.message);
-      history.push('/');
+      history.push({ pathname: '/', state: response.message });
     } else {
-      localStorage.setItem('errorNow', response.message);
+      setErrorMessage(response.message);
     }
   };
+
+  useEffect(() => () => {
+    setErrorMessage(undefined);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -73,6 +78,7 @@ const Signup = () => {
           <button data-testid="submit" type="submit">Submit</button>
         </div>
       </div>
+      {errorMessage ? <div>{errorMessage}</div> : null}
     </form>
   );
 };

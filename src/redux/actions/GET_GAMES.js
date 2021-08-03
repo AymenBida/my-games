@@ -1,4 +1,4 @@
-import GET_GAMES from './actionTypes';
+import { GET_GAMES } from './actionTypes';
 
 const parseData = (data) => {
   const newData = data.map((ele) => {

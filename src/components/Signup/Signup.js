@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
+import * as auth from '../../redux/actions/LOGIN_STATUS';
 
 const Signup = () => {
-  const [errorMessage, setErrorMessage] = useState(undefined);
   const history = useHistory();
   const credentials = useSelector((state) => state.signup);
+  const status = useSelector((state) => state.loginStatus);
+  const { failure } = status;
   const { name, email, password } = credentials;
   const dispatch = useDispatch();
 
@@ -18,18 +20,18 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await postSignup(credentials);
-    console.log(response);
     if (response.auth_token) {
-      localStorage.setItem('token', response.auth_token);
+      dispatch(auth.login({ username: response.username, token: response.auth_token }));
       localStorage.setItem('username', response.username);
-      history.push({ pathname: '/', state: response.message });
+      localStorage.setItem('token', response.auth_token);
+      history.push({ pathname: '/', state: { success: response.message } });
     } else {
-      setErrorMessage(response.message);
+      dispatch(auth.failure(response.message));
     }
   };
 
   useEffect(() => () => {
-    setErrorMessage(undefined);
+    dispatch(auth.failure());
   }, []);
 
   return (
@@ -78,7 +80,7 @@ const Signup = () => {
           <button data-testid="submit" type="submit">Submit</button>
         </div>
       </div>
-      {errorMessage ? <div>{errorMessage}</div> : null}
+      {failure ? <div>{failure}</div> : null}
     </form>
   );
 };

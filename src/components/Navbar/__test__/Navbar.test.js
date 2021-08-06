@@ -91,7 +91,6 @@ describe('Navbar element', () => {
       fireEvent.click(logout);
 
       expect(history.location.pathname).toBe('/');
-      expect(screen.getByText(/You are now logged out/i)).toBeInTheDocument();
     });
   });
 });

@@ -7,11 +7,9 @@ import './index.scss';
 const Routes = () => (
   <>
     <BrowserRouter>
+      <Navbar />
       <Switch>
-        <Route exact path="/">
-          <Navbar />
-          <App />
-        </Route>
+        <Route exact path="/" component={App} />
         <Route exact path="/signup" component={Signup} />
       </Switch>
     </BrowserRouter>

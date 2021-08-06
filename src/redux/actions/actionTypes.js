@@ -6,3 +6,4 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+export const RESET_VALUES = 'RESET_VALUES';

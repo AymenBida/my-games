@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import games from './games';
-import signup from './signup';
+import credentials from './credentials';
 import loginStatus from './loginStatus';
 
-export default combineReducers({ games, signup, loginStatus });
+export default combineReducers({ games, credentials, loginStatus });

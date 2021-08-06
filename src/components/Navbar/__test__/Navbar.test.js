@@ -1,15 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import Navbar from '../Navbar';
 import rootReducer from '../../../redux/reducers';
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 const store = createStore(rootReducer);
 
@@ -45,7 +40,6 @@ describe('Navbar element', () => {
           </Router>
         </Provider>,
       );
-      console.log(store.getState());
       const username = getByTestId('username');
       const logout = getByTestId('logout');
 

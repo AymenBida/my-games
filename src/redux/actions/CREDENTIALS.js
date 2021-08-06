@@ -1,4 +1,6 @@
-import { CHANGE_NAME, CHANGE_EMAIL, CHANGE_PASSWORD } from './actionTypes';
+import {
+  CHANGE_NAME, CHANGE_EMAIL, CHANGE_PASSWORD, RESET_VALUES,
+} from './actionTypes';
 
 export const changeName = (data) => ({
   type: CHANGE_NAME,
@@ -13,4 +15,8 @@ export const changeEmail = (data) => ({
 export const changePassword = (data) => ({
   type: CHANGE_PASSWORD,
   payload: data,
+});
+
+export const resetValues = () => ({
+  type: RESET_VALUES,
 });

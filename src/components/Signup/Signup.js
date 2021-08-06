@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
 import * as auth from '../../redux/actions/LOGIN_STATUS';
 
 const Signup = () => {
   const history = useHistory();
-  const credentials = useSelector((state) => state.signup);
-  const status = useSelector((state) => state.loginStatus);
-  const { failure } = status;
+  const credentials = useSelector((state) => state.credentials);
   const { name, email, password } = credentials;
   const dispatch = useDispatch();
 
@@ -26,16 +25,23 @@ const Signup = () => {
       localStorage.setItem('token', response.auth_token);
       history.push({ pathname: '/', state: { success: response.message } });
     } else {
-      dispatch(auth.failure(response.message));
+      toast.error(response.message);
     }
   };
 
-  useEffect(() => () => {
-    dispatch(auth.failure());
-  }, []);
-
   return (
     <form onSubmit={handleSubmit}>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div data-testid="signup">
         <div>
           <label htmlFor="username">
@@ -80,7 +86,6 @@ const Signup = () => {
           <button data-testid="submit" type="submit">Submit</button>
         </div>
       </div>
-      {failure ? <div>{failure}</div> : null}
     </form>
   );
 };

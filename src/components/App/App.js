@@ -2,7 +2,8 @@ import './style/App.scss';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import toast from '../MyToaster/MyToaster';
 import 'react-toastify/dist/ReactToastify.css';
 import getGames from '../../api/getGames';
 import Card from './components/Card/Card';
@@ -13,7 +14,6 @@ const App = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.games);
   const success = useRef({ message: history.location.state?.success, done: false });
-  const failure = useRef({ message: history.location.state?.failure, done: false });
 
   const callGames = async () => {
     const data = await getGames();
@@ -22,7 +22,7 @@ const App = () => {
 
   const useToastMessage = (ref) => {
     if (!ref.current.done && ref.current.message) {
-      toast.success(ref.current.message);
+      toast(ref.current.message, 'success');
       // eslint-disable-next-line no-param-reassign
       ref.current.done = true;
       // eslint-disable-next-line no-param-reassign
@@ -33,23 +33,12 @@ const App = () => {
 
   useEffect(() => {
     useToastMessage(success);
-    useToastMessage(failure);
     callGames();
   }, []);
 
   return (
     <>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer />
       {games.map(({
         id, title, cover, year,
       }) => (<Card key={id} title={title} cover={cover} year={year} />))}

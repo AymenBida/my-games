@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import toast from '../MyToaster/MyToaster';
 import 'react-toastify/dist/ReactToastify.css';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
@@ -25,23 +26,13 @@ const Signup = () => {
       localStorage.setItem('token', response.auth_token);
       history.push({ pathname: '/', state: { success: response.message } });
     } else {
-      toast.error(response.message);
+      toast(response.message, 'error');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={2000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <ToastContainer />
       <div data-testid="signup">
         <div>
           <label htmlFor="username">

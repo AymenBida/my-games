@@ -4,6 +4,7 @@ import App from './components/App/App';
 import Signup from './components/Signup/Signup';
 import './index.scss';
 import Login from './components/Login/Login';
+import Game from './components/App/components/Game/Game';
 
 const Routes = () => (
   <>
@@ -13,6 +14,7 @@ const Routes = () => (
         <Route exact path="/" component={App} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/games/:id" component={Game} />
       </Switch>
     </BrowserRouter>
   </>

@@ -1,0 +1,10 @@
+.game {
+  &__cover {
+    width: 325px;
+    height: 350px;
+    border-radius: 5px;
+    margin: 0 auto 2em;
+    background-position: center;
+    background-size: cover;
+  }
+}

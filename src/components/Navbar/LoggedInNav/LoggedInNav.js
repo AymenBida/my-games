@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import toast from '../../MyToaster/MyToaster';
@@ -9,21 +8,16 @@ const LoggedInNav = () => {
   const { username } = useSelector((state) => state.loginStatus);
 
   const logout = () => {
+    toast('You are now logged out!', 'warning');
     dispatch(auth.logout());
     localStorage.clear();
-    toast('You are now logged out!', 'warning');
   };
 
   return (
     <nav>
       <ToastContainer />
       <p data-testid="username">{username}</p>
-      <Link
-        to={{ pathname: '/', state: { failure: 'You are now logged out!' } }}
-        onClick={logout}
-      >
-        <button data-testid="logout" type="button">Logout</button>
-      </Link>
+      <button data-testid="logout" onClick={logout} type="button">Logout</button>
     </nav>
   );
 };

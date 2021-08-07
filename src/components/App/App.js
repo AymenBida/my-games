@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import toast from '../MyToaster/MyToaster';
 import 'react-toastify/dist/ReactToastify.css';
 import getGames from '../../api/getGames';
@@ -41,7 +42,7 @@ const App = () => {
       <ToastContainer />
       {games.map(({
         id, title, cover, year,
-      }) => (<Card key={id} title={title} cover={cover} year={year} />))}
+      }) => (<Link to={`/games/${id}`} key={id}><Card title={title} cover={cover} year={year} /></Link>))}
     </>
   );
 };

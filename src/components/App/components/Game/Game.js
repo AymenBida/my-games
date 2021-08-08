@@ -35,7 +35,7 @@ const Game = () => {
           <p>
             {`Year : ${year || 'Unknown'}`}
           </p>
-          {username ? <Favourite gameId={id} /> : null}
+          {username ? <Favourite gameId={parseInt(id, 10)} /> : null}
         </div>
         <div style={style.current} className="game__cover" />
       </div>

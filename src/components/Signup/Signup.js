@@ -24,7 +24,8 @@ const Signup = () => {
       dispatch(auth.login({ username: response.username, token: response.auth_token }));
       localStorage.setItem('username', response.username);
       localStorage.setItem('token', response.auth_token);
-      history.push({ pathname: '/', state: { success: response.message } });
+      history.push({ pathname: '/' });
+      toast(response.message, 'success');
     } else {
       toast(response.message, 'error');
     }

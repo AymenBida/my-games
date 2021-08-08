@@ -24,7 +24,8 @@ function Login() {
       dispatch(auth.login({ username: response.username, token: response.auth_token }));
       localStorage.setItem('username', response.username);
       localStorage.setItem('token', response.auth_token);
-      history.push({ pathname: '/', state: { success: response.message } });
+      history.push({ pathname: '/' });
+      toast(`Hello ${response.username}, you are now logged in!`, 'success');
     } else {
       toast(response.message, 'error');
     }

@@ -1,6 +1,7 @@
 import Axios from 'axios';
+import url from './endpoint';
 
-export const endpoint = 'http://localhost:3001/signup';
+export const endpoint = `${url}/signup`;
 
 const postSignup = async ({ name, email, password }) => {
   try {

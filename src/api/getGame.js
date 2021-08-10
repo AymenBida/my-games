@@ -1,6 +1,7 @@
 import Axios from 'axios';
+import url from './endpoint';
 
-export const endpoint = 'http://localhost:3001/games/';
+export const endpoint = `${url}/games/`;
 
 const getGame = async (id) => {
   try {

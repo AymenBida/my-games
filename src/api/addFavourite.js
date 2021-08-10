@@ -1,6 +1,7 @@
 import Axios from 'axios';
+import url from './endpoint';
 
-export const endpoint = 'http://localhost:3001/favourites';
+export const endpoint = `${url}/favourites`;
 
 const addFavourite = async (gameId, token) => {
   try {

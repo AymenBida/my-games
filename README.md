@@ -1,28 +1,37 @@
-## Title
+# Bida Games
 
-> brief description
+> A mobile web app that fetches data from an API where users can see the latest popular games and can choose to make some of them favourites.
 
-## Built With 
+- It comes with JWT authentication.
 
-- JavaScript, React, HTML5 and CSS
+## Built With
+
+- JavaScript, React, Redux, HTML5 and CSS
+
+## Prerequisites
+
+- Git
+- NodeJs
+- any Modern Browser
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-- git clone `git@github.com:AymenBida/<repo>.git`
-- cd into the `<repo>`
-- open `index.html` 
+- git clone `git@github.com:AymenBida/my-games-frontend.git`
+- cd into the `my-games-frontend`
+- run `npm install`
+- run `npm start`
 
-### Prerequisites
+## Live Demo
 
-- Get a browser like Chrome and Firefox in their most recent versions
+- Follow [this link](https://bida-games.herokuapp.com/) to try the app
 
 ### Install
 
 - Install VSCode or any code editor you prefer
 
-# Author
+## Author
 
 👤 **Aymen Bida**
 
@@ -34,11 +43,11 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/AymenBida/<repo>/issues).
+Feel free to check the [issues page](https://github.com/AymenBida/my-games-frontend/issues).
 
 ## Acknowledgments
 
-If any
+- Design idea by Alexey Savitskiy on Behance
 
 ## Show your support
 

@@ -3,6 +3,7 @@
 > A mobile web app that fetches data from an API where users can see the latest popular games and can choose to mark some of them as favourites.
 
 - It comes with JWT authentication.
+- Link for the serving API repo: <https://github.com/AymenBida/my-games-backend>
 
 ## Built With
 

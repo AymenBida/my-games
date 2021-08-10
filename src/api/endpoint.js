@@ -1,1 +1,1 @@
-export default 'http://bida-games-api.herokuapp.com';
+export default 'https://bida-games-api.herokuapp.com';

@@ -48,7 +48,7 @@ const Favourite = ({ gameId }) => {
 
   useEffect(() => {
     callFavourites();
-  }, [favourites]);
+  }, []);
 
   return (
     <>

@@ -6,10 +6,28 @@ const LoggedOutNav = () => {
   const dispatch = useDispatch();
 
   return (
-    <nav>
-      <Link to="/signup"><button data-testid="signup" onClick={() => dispatch(resetValues())} type="button">Register</button></Link>
-      <Link to="/login"><button data-testid="login" onClick={() => dispatch(resetValues())} type="button">Login</button></Link>
-    </nav>
+    <>
+      <Link to="/signup" className="ms-auto">
+        <button
+          data-testid="signup"
+          onClick={() => dispatch(resetValues())}
+          type="button"
+          className="btn btn-sm btn-danger clr-orange text-white rounded-pill px-3"
+        >
+          Sign up
+        </button>
+      </Link>
+      <Link to="/login">
+        <button
+          data-testid="login"
+          onClick={() => dispatch(resetValues())}
+          type="button"
+          className="btn btn-sm btn-danger clr-orange text-white rounded-pill px-3"
+        >
+          Log in
+        </button>
+      </Link>
+    </>
   );
 };
 

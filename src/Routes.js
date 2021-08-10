@@ -9,13 +9,15 @@ import Game from './components/App/components/Game/Game';
 const Routes = () => (
   <>
     <BrowserRouter>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/games/:id" component={Game} />
-      </Switch>
+      <div className="container">
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/games/:id" component={Game} />
+        </Switch>
+      </div>
     </BrowserRouter>
   </>
 );

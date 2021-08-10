@@ -14,11 +14,18 @@ const LoggedInNav = () => {
   };
 
   return (
-    <nav>
+    <>
       <ToastContainer />
-      <p data-testid="username">{username}</p>
-      <button data-testid="logout" onClick={logout} type="button">Logout</button>
-    </nav>
+      <span className="ms-auto" data-testid="username">{username}</span>
+      <button
+        data-testid="logout"
+        onClick={logout}
+        className="btn btn-sm btn-danger clr-orange text-white rounded-pill px-3"
+        type="button"
+      >
+        Logout
+      </button>
+    </>
   );
 };
 

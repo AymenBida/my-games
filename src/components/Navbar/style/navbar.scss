@@ -1,0 +1,13 @@
+.mainNavbar {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    margin: 0 0.5em;
+  }
+}
+
+.clr-orange {
+  background-color: var(--orange-clr) !important;
+  border-color: var(--orange-clr) !important;
+}

@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
-import getFavourites from '../../../../../api/getFavourites';
 import addFavourite from '../../../../../api/addFavourite';
 import deleteFavourite from '../../../../../api/deleteFavourite';
 import * as fav from '../../../../../redux/actions/FAVOURITES';
@@ -12,13 +10,6 @@ const Favourite = ({ gameId }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.loginStatus);
   const favourites = useSelector((state) => state.favourites);
-
-  const callFavourites = async () => {
-    const data = await getFavourites(token);
-    if (Array.isArray(data)) {
-      dispatch(fav.getFavourites(data));
-    }
-  };
 
   const callAddFavourite = async () => {
     const response = await addFavourite(gameId, token);
@@ -45,10 +36,6 @@ const Favourite = ({ gameId }) => {
 
     return favourites.find((id) => id === gameIdToTest);
   };
-
-  useEffect(() => {
-    callFavourites();
-  }, []);
 
   return (
     <>

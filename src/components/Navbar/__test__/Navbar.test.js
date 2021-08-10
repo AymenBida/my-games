@@ -22,9 +22,9 @@ describe('Navbar element', () => {
       const signup = getByTestId('signup');
       const login = getByTestId('login');
 
-      expect(signup.textContent).toBe('Register');
+      expect(signup.textContent).toBe('Sign up');
       expect(signup.type).toBe('button');
-      expect(login.textContent).toBe('Login');
+      expect(login.textContent).toBe('Log in');
       expect(login.type).toBe('button');
     });
   });

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import toast from '../../MyToaster/MyToaster';
 import * as auth from '../../../redux/actions/LOGIN_STATUS';
+import { clearFavourites } from '../../../redux/actions/FAVOURITES';
 
 const LoggedInNav = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const LoggedInNav = () => {
   const logout = () => {
     toast('You are now logged out!', 'warning');
     dispatch(auth.logout());
+    dispatch(clearFavourites());
     localStorage.clear();
   };
 

@@ -1,4 +1,6 @@
-import { GET_FAVOURITES, ADD_FAVOURITE, DELETE_FAVOURITE } from './actionTypes';
+import {
+  GET_FAVOURITES, ADD_FAVOURITE, DELETE_FAVOURITE, CLEAR_FAVOURITES,
+} from './actionTypes';
 
 const getFavouritesGameIds = (favourites) => favourites.map((favourite) => favourite.game_id);
 
@@ -15,4 +17,8 @@ export const addFavourite = (data) => ({
 export const deleteFavourite = (data) => ({
   type: DELETE_FAVOURITE,
   payload: data,
+});
+
+export const clearFavourites = () => ({
+  type: CLEAR_FAVOURITES,
 });

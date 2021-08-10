@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as crd from '../../redux/actions/CREDENTIALS';
 import postLogin from '../../api/postLogin';
 import * as auth from '../../redux/actions/LOGIN_STATUS';
+import './style/login.scss';
 
 function Login() {
   const history = useHistory();
@@ -32,34 +33,48 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="loginForm">
       <ToastContainer />
       <div>
-        <label htmlFor="email">
-          Email
+        <h1 className="text-center">Sign in</h1>
+        <div className="w-60 m-auto">
+          <p className="text-center fs-7">Hello there! Sign in and pick your favourite game</p>
+        </div>
+      </div>
+      <div>
+        <label htmlFor="email" className="text-center">
           <input
             data-testid="email"
             type="email"
             value={email}
             required
             onChange={(e) => handleChange(e, crd.changeEmail)}
+            className="form-control rounded-pill"
+            placeholder="Email"
           />
         </label>
       </div>
       <div>
         <label htmlFor="password">
-          Password
           <input
             data-testid="password"
             type="password"
             value={password}
             required
             onChange={(e) => handleChange(e, crd.changePassword)}
+            className="form-control rounded-pill"
+            placeholder="Password"
           />
         </label>
       </div>
       <div>
-        <button data-testid="submit" type="submit">Submit</button>
+        <button
+          data-testid="submit"
+          type="submit"
+          className="btn btn-danger clr-orange text-white rounded-pill px-4 mb-5"
+        >
+          Submit
+        </button>
       </div>
     </form>
   );

@@ -1,6 +1,6 @@
 # Bida Games
 
-> A mobile web app that fetches data from an API where users can see the latest popular games and can choose to make some of them favourites.
+> A mobile web app that fetches data from an API where users can see the latest popular games and can choose to mark some of them as favourites.
 
 - It comes with JWT authentication.
 

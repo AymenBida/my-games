@@ -28,9 +28,11 @@ To get a local copy up and running follow these simple example steps.
 
 - Follow [this link](https://bida-games.herokuapp.com/) to try the app
 
-### Install
+## Tests
 
-- Install VSCode or any code editor you prefer
+To run tests use this command:
+
+- `npm test`
 
 ## Author
 

@@ -27,7 +27,7 @@ describe('Signup form', () => {
       expect(password.type).toBe('password');
       expect(email.value).toBe('');
       expect(email.type).toBe('email');
-      expect(submit.textContent).toBe('Submit');
+      expect(submit.textContent).toBe('Sign up');
       expect(submit.type).toBe('submit');
     });
   });

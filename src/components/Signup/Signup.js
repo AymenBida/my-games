@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import postSignup from '../../api/postSignup';
 import * as crd from '../../redux/actions/CREDENTIALS';
 import * as auth from '../../redux/actions/LOGIN_STATUS';
+import './style/signup.scss';
 
 const Signup = () => {
   const history = useHistory();
@@ -32,51 +33,55 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="signupForm">
       <ToastContainer />
-      <div data-testid="signup">
-        <div>
-          <label htmlFor="username">
-            Username
-            <input
-              id="username"
-              data-testid="username"
-              type="text"
-              value={name}
-              required
-              onChange={(e) => handleChange(e, crd.changeName)}
-            />
-          </label>
+      <div>
+        <h1 className="text-center">Sign up</h1>
+        <div className="w-60 m-auto">
+          <p className="text-center fs-7">Hello there! Sign up to pick your favourite game</p>
         </div>
-        <div>
-          <label htmlFor="email">
-            Email
-            <input
-              id="email"
-              data-testid="email"
-              value={email}
-              type="email"
-              required
-              onChange={(e) => handleChange(e, crd.changeEmail)}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password
-            <input
-              id="password"
-              data-testid="password"
-              type="password"
-              value={password}
-              required
-              onChange={(e) => handleChange(e, crd.changePassword)}
-            />
-          </label>
-        </div>
-        <div>
-          <button data-testid="submit" type="submit">Submit</button>
-        </div>
+      </div>
+      <div>
+        <input
+          data-testid="username"
+          type="text"
+          value={name}
+          required
+          onChange={(e) => handleChange(e, crd.changeName)}
+          className="form-control rounded-pill"
+          placeholder="Username"
+        />
+      </div>
+      <div>
+        <input
+          data-testid="email"
+          value={email}
+          type="email"
+          required
+          onChange={(e) => handleChange(e, crd.changeEmail)}
+          className="form-control rounded-pill"
+          placeholder="Email"
+        />
+      </div>
+      <div>
+        <input
+          data-testid="password"
+          type="password"
+          value={password}
+          required
+          onChange={(e) => handleChange(e, crd.changePassword)}
+          className="form-control rounded-pill"
+          placeholder="Password"
+        />
+      </div>
+      <div>
+        <button
+          data-testid="submit"
+          type="submit"
+          className="btn btn-danger clr-orange text-white rounded-pill px-4 mb-5"
+        >
+          Sign up
+        </button>
       </div>
     </form>
   );

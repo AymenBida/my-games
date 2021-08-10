@@ -14,7 +14,6 @@ const Game = () => {
   const { username } = useSelector((state) => state.loginStatus);
   const { params: { id } } = useRouteMatch();
   const dispatch = useDispatch();
-  const { title, cover, year } = useSelector((state) => state.game);
 
   const callGame = async (gameId) => {
     const data = await getGame(gameId);
@@ -23,17 +22,22 @@ const Game = () => {
 
   useEffect(() => {
     callGame(id);
-    if (cover) { style.current.backgroundImage = cover; }
   }, []);
+
+  const { title, year, cover } = useSelector((state) => state.game);
+
+  if (cover) {
+    style.current = { backgroundImage: `url(${cover})` };
+  }
 
   return (
     <>
       <ToastContainer />
       <div>
         <div>
-          <h1>{title ? capitalize(title) : 'Unknown Game'}</h1>
+          <h1>{title ? capitalize(title) : '-'}</h1>
           <p>
-            {`Year : ${year || 'Unknown'}`}
+            {`Year : ${year || '-'}`}
           </p>
           {username ? <Favourite gameId={parseInt(id, 10)} /> : null}
         </div>

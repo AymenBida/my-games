@@ -1,15 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
+import { useEffect } from 'react';
 import addFavourite from '../../../../../api/addFavourite';
 import deleteFavourite from '../../../../../api/deleteFavourite';
 import * as fav from '../../../../../redux/actions/FAVOURITES';
 import toast from '../../../../MyToaster/MyToaster';
+import getFavourites from '../../../../../api/getFavourites';
 
 const Favourite = ({ gameId }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.loginStatus);
   const favourites = useSelector((state) => state.favourites);
+
+  const callFavourites = async () => {
+    const data = await getFavourites(token);
+    if (Array.isArray(data)) {
+      dispatch(fav.getFavourites(data));
+    }
+  };
 
   const callAddFavourite = async () => {
     const response = await addFavourite(gameId, token);
@@ -37,12 +46,32 @@ const Favourite = ({ gameId }) => {
     return favourites.find((id) => id === gameIdToTest);
   };
 
+  useEffect(() => {
+    callFavourites();
+  }, []);
+
   return (
     <>
       <ToastContainer />
       {checkIfFavourite(gameId)
-        ? <button type="button" onClick={callDeleteFavourite}>hihihi</button>
-        : <button type="button" onClick={callAddFavourite}>hahaha</button>}
+        ? (
+          <button
+            type="button"
+            className="btn btn-sm btn-danger rounded-pill px-3 mb-3"
+            onClick={callDeleteFavourite}
+          >
+            Delete Favourite
+          </button>
+        )
+        : (
+          <button
+            type="button"
+            className="btn btn-sm btn-success rounded-pill px-3 mb-3"
+            onClick={callAddFavourite}
+          >
+            Add favourite
+          </button>
+        )}
     </>
   );
 };

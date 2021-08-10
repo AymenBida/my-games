@@ -42,38 +42,34 @@ function Login() {
         </div>
       </div>
       <div>
-        <label htmlFor="email" className="text-center">
-          <input
-            data-testid="email"
-            type="email"
-            value={email}
-            required
-            onChange={(e) => handleChange(e, crd.changeEmail)}
-            className="form-control rounded-pill"
-            placeholder="Email"
-          />
-        </label>
+        <input
+          data-testid="email"
+          type="email"
+          value={email}
+          required
+          onChange={(e) => handleChange(e, crd.changeEmail)}
+          className="form-control rounded-pill"
+          placeholder="Email"
+        />
       </div>
       <div>
-        <label htmlFor="password">
-          <input
-            data-testid="password"
-            type="password"
-            value={password}
-            required
-            onChange={(e) => handleChange(e, crd.changePassword)}
-            className="form-control rounded-pill"
-            placeholder="Password"
-          />
-        </label>
+        <input
+          data-testid="password"
+          type="password"
+          value={password}
+          required
+          onChange={(e) => handleChange(e, crd.changePassword)}
+          className="form-control rounded-pill"
+          placeholder="Password"
+        />
       </div>
       <div>
         <button
           data-testid="submit"
           type="submit"
-          className="btn btn-danger clr-orange text-white rounded-pill px-4 mb-5"
+          className="btn btn-success text-white rounded-pill px-4 mb-5"
         >
-          Submit
+          Sign in
         </button>
       </div>
     </form>

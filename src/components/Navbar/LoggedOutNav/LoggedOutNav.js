@@ -22,7 +22,7 @@ const LoggedOutNav = () => {
           data-testid="login"
           onClick={() => dispatch(resetValues())}
           type="button"
-          className="btn btn-sm btn-danger clr-orange text-white rounded-pill px-3"
+          className="btn btn-sm btn-success text-white rounded-pill px-3"
         >
           Log in
         </button>

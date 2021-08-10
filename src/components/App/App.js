@@ -29,11 +29,6 @@ const App = () => {
     }
   };
 
-  // if (username && token) {
-  //   console.log('im the problem');
-  //   callFavourites();
-  // }
-
   const callGames = async () => {
     const data = await getGames();
     dispatch(GET_GAMES(data));
@@ -49,16 +44,21 @@ const App = () => {
   return (
     <>
       <ToastContainer />
+      <p className="mb-0">{`Hello${username ? ` ${username}` : ''},`}</p>
+      <p>You can find here the latest popular games.</p>
       {(username && token) ? (
-        <label htmlFor="onlyFav">
-          <input
-            id="onlyFav"
-            type="checkbox"
-            checked={isChecked}
-            onChange={handleCheckBox}
-          />
-          Only Favourites
-        </label>
+        <div className="float-end">
+          <label htmlFor="onlyFav" className="mb-3">
+            <input
+              id="onlyFav"
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckBox}
+              className="me-1"
+            />
+            Only show Favourites
+          </label>
+        </div>
       ) : null}
       {favouriteGames.map(({
         id, title, cover, year,

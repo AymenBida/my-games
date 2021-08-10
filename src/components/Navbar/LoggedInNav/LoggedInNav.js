@@ -20,7 +20,7 @@ const LoggedInNav = () => {
       <button
         data-testid="logout"
         onClick={logout}
-        className="btn btn-sm btn-danger clr-orange text-white rounded-pill px-3"
+        className="btn btn-sm btn-danger text-white rounded-pill px-3"
         type="button"
       >
         Logout

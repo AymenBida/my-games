@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import url from './endpoint';
 
-export const endpoint = `${url}/signup`;
+export const endpoint = `${url}/users`;
 
 const postSignup = async ({ name, email, password }) => {
   try {

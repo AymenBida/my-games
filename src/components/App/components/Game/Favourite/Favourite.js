@@ -6,19 +6,11 @@ import addFavourite from '../../../../../api/addFavourite';
 import deleteFavourite from '../../../../../api/deleteFavourite';
 import * as fav from '../../../../../redux/actions/FAVOURITES';
 import toast from '../../../../MyToaster/MyToaster';
-import getFavourites from '../../../../../api/getFavourites';
 
 const Favourite = ({ gameId }) => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.loginStatus);
   const favourites = useSelector((state) => state.favourites);
-
-  const callFavourites = async () => {
-    const data = await getFavourites(token);
-    if (Array.isArray(data)) {
-      dispatch(fav.getFavourites(data));
-    }
-  };
 
   const callAddFavourite = async () => {
     const response = await addFavourite(gameId, token);
@@ -47,7 +39,6 @@ const Favourite = ({ gameId }) => {
   };
 
   useEffect(() => {
-    callFavourites();
   }, []);
 
   return (

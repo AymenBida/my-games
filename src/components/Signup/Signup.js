@@ -1,26 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { useState } from 'react';
 import toast from '../MyToaster/MyToaster';
 import 'react-toastify/dist/ReactToastify.css';
 import postSignup from '../../api/postSignup';
-import * as crd from '../../redux/actions/CREDENTIALS';
 import * as auth from '../../redux/actions/LOGIN_STATUS';
 import './style/signup.scss';
 
 const Signup = () => {
   const history = useHistory();
-  const credentials = useSelector((state) => state.credentials);
-  const { name, email, password } = credentials;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
-  const handleChange = (event, action) => {
-    dispatch(action(event.target.value));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await postSignup(credentials);
+    const response = await postSignup({ name, email, password });
     if (response.auth_token) {
       dispatch(auth.login({ username: response.username, token: response.auth_token }));
       localStorage.setItem('username', response.username);
@@ -47,7 +44,7 @@ const Signup = () => {
           type="text"
           value={name}
           required
-          onChange={(e) => handleChange(e, crd.changeName)}
+          onChange={(e) => setName(e.target.value)}
           className="form-control rounded-pill"
           placeholder="Username"
         />
@@ -58,7 +55,7 @@ const Signup = () => {
           value={email}
           type="email"
           required
-          onChange={(e) => handleChange(e, crd.changeEmail)}
+          onChange={(e) => setEmail(e.target.value)}
           className="form-control rounded-pill"
           placeholder="Email"
         />
@@ -69,7 +66,7 @@ const Signup = () => {
           type="password"
           value={password}
           required
-          onChange={(e) => handleChange(e, crd.changePassword)}
+          onChange={(e) => setPassword(e.target.value)}
           className="form-control rounded-pill"
           placeholder="Password"
         />

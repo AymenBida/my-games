@@ -1,22 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import { useState } from 'react';
 import toast from '../MyToaster/MyToaster';
 import 'react-toastify/dist/ReactToastify.css';
-import * as crd from '../../redux/actions/CREDENTIALS';
 import postLogin from '../../api/postLogin';
 import * as auth from '../../redux/actions/LOGIN_STATUS';
 import './style/login.scss';
 
 function Login() {
   const history = useHistory();
-  const credentials = useSelector((state) => state.credentials);
-  const { email, password } = credentials;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
-  const handleChange = (event, action) => {
-    dispatch(action(event.target.value));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +43,7 @@ function Login() {
           type="email"
           value={email}
           required
-          onChange={(e) => handleChange(e, crd.changeEmail)}
+          onChange={(e) => setEmail(e.target.value)}
           className="form-control rounded-pill"
           placeholder="Email"
         />
@@ -58,7 +54,7 @@ function Login() {
           type="password"
           value={password}
           required
-          onChange={(e) => handleChange(e, crd.changePassword)}
+          onChange={(e) => setPassword(e.target.value)}
           className="form-control rounded-pill"
           placeholder="Password"
         />

@@ -1,11 +1,11 @@
-import Axios from 'axios';
+import { axiosPost } from './callCenter';
 import url from './endpoint';
 
 export const endpoint = `${url}/users`;
 
 const postSignup = async ({ name, email, password }) => {
   try {
-    const response = await Axios.post(endpoint, {
+    const response = await axiosPost(endpoint, {
       name,
       email,
       password,

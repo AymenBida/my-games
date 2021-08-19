@@ -1,4 +1,9 @@
 import { combineReducers } from 'redux';
-import samples from './samples';
+import games from './games';
+import loginStatus from './loginStatus';
+import game from './game';
+import favourites from './favourites';
 
-export default combineReducers({ samples });
+export default combineReducers({
+  games, loginStatus, game, favourites,
+});

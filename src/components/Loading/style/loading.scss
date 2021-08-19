@@ -1,0 +1,8 @@
+.position {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: calc(100vh - 50% - 32px);
+  right: calc(100vw - 50% - 32px);
+  z-index: 2;
+}

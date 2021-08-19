@@ -1,0 +1,42 @@
+.card {
+  width: 325px;
+  height: 450px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 0 auto 2em;
+
+  &__cover {
+    width: 100%;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &__detailsWrapper {
+    display: flex;
+    padding: 0.5em 1em;
+    justify-content: space-between;
+  }
+
+  &__yearWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__yearLabel {
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__year {
+    margin: 0;
+    text-align: center;
+  }
+}

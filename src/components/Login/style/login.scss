@@ -1,0 +1,20 @@
+.loginForm {
+  height: calc(100vh - 70px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    margin: 0.8em 0;
+  }
+}
+
+.fs-7 {
+  font-size: 0.8em;
+}
+
+.w-60 {
+  width: 60%;
+}
